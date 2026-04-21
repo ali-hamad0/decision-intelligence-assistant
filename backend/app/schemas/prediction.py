@@ -9,6 +9,7 @@ class MLPredictionResponse(BaseModel):
 
 class LLMPredictionResponse(BaseModel):
     priority: str
+    confidence: float | None = None   # 0.0–1.0 self-reported by the LLM
     reasoning: str
     latency_ms: float
     cost_usd: float

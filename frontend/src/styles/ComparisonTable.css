@@ -127,6 +127,18 @@
   max-width: 340px;
 }
 
+.accuracy-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.accuracy-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: inherit;
+}
+
 .muted { color: var(--text-light); }
 
 .cost-zero { color: var(--normal); font-weight: 500; }

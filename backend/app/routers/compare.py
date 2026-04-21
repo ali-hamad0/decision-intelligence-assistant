@@ -7,7 +7,7 @@ from app.schemas.comparison import ComparisonResponse, LLMOnlyResponse, RAGRespo
 from app.schemas.query import QueryRequest
 from app.services.llm_client import answer_query, predict_priority_llm
 from app.services.ml_model import predict_priority_ml
-from app.services.vector_store import retrieve
+from app.services.vector_store import LOW_SIMILARITY_THRESHOLD, retrieve
 
 logger = logging.getLogger(__name__)
 
@@ -41,10 +41,20 @@ async def compare(request: QueryRequest) -> ComparisonResponse:
 
         llm_answer, llm_latency, llm_cost = llm_result
 
+        best_score = max((s["similarity_score"] for s in sources), default=0.0)
+        low_similarity = best_score < LOW_SIMILARITY_THRESHOLD
+        if low_similarity:
+            logger.warning(
+                "Low similarity retrieval (best=%.3f < threshold=%.2f) — RAG context may be off-topic",
+                best_score,
+                LOW_SIMILARITY_THRESHOLD,
+            )
+
         return ComparisonResponse(
             rag=RAGResponse(
                 answer=rag_answer,
                 sources=sources,
+                low_similarity=low_similarity,
                 latency_ms=rag_latency,
                 cost_usd=rag_cost,
             ),

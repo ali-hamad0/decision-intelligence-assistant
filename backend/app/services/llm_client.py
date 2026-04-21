@@ -42,7 +42,8 @@ def predict_priority_llm(text: str) -> LLMPredictionResponse:
                 "content": (
                     "You are a customer support ticket classifier. "
                     "Classify the ticket as 'urgent' or 'normal'. "
-                    'Respond with JSON only: {"priority": "urgent" or "normal", "reasoning": "one sentence"}'
+                    "Respond with JSON only: "
+                    '{"priority": "urgent" or "normal", "confidence": 0.0-1.0, "reasoning": "one sentence"}'
                 ),
             },
             {"role": "user", "content": text},
@@ -56,15 +57,18 @@ def predict_priority_llm(text: str) -> LLMPredictionResponse:
     try:
         parsed = json.loads(content)
         priority = parsed.get("priority", "normal")
+        confidence = float(parsed["confidence"]) if "confidence" in parsed else None
         reasoning = parsed.get("reasoning", "")
-    except (json.JSONDecodeError, KeyError):
+    except (json.JSONDecodeError, KeyError, ValueError):
         logger.warning("LLM returned non-JSON: %.100s", content)
         priority = "normal"
+        confidence = None
         reasoning = content[:200]
 
-    logger.info("LLM priority: %s (%.0fms, $%.6f)", priority, latency_ms, cost_usd)
+    logger.info("LLM priority: %s conf=%.2f (%.0fms, $%.6f)", priority, confidence or 0, latency_ms, cost_usd)
     return LLMPredictionResponse(
         priority=priority,
+        confidence=confidence,
         reasoning=reasoning,
         latency_ms=latency_ms,
         cost_usd=cost_usd,

@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir uv
 COPY pyproject.toml uv.lock ./
 
 # Install dependencies (no dev extras)
+ENV UV_HTTP_TIMEOUT=120
 RUN uv sync --frozen --no-dev
 
 # Copy application code and artefacts

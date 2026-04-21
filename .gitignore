@@ -26,8 +26,8 @@ data/processed/*
 logs/*
 !logs/.gitkeep
 
-# Chroma vector DB (runtime data, not source)
-backend/chroma_data/
+# Chroma vector DB — intentionally tracked for deployment
+# backend/chroma_data/
 
 # Caches
 .pytest_cache/

@@ -11,6 +11,9 @@ _CHROMA_PATH = Path(__file__).resolve().parents[2] / "chroma_data"
 _COLLECTION_NAME = "support_tickets"
 _EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 _TOP_K = 3
+# Similarity is cosine (1 − distance). Below this the retrieved context
+# is likely off-topic and the RAG answer may be less reliable.
+LOW_SIMILARITY_THRESHOLD = 0.15
 
 
 @lru_cache(maxsize=1)

@@ -35,7 +35,8 @@ export default function ComparisonTable({ mlPrediction, llmPrediction }) {
           <tr>
             <th>Model</th>
             <th>Predicted Priority</th>
-            <th>Confidence</th>
+            <th>Test Accuracy</th>
+            <th>Confidence / Reasoning</th>
             <th>Latency</th>
             <th>Cost / call</th>
           </tr>
@@ -52,6 +53,10 @@ export default function ComparisonTable({ mlPrediction, llmPrediction }) {
               </div>
             </td>
             <td><strong>{mlLabel}</strong></td>
+            <td className="mono accuracy-cell">
+              ~70%
+              <span className="accuracy-note">180k tickets</span>
+            </td>
             <td><ConfidenceCell confidence={mlPrediction?.confidence} /></td>
             <td className="mono">{mlPrediction?.latency_ms != null ? `${mlPrediction.latency_ms} ms` : "—"}</td>
             <td><CostCell cost={0} /></td>
@@ -68,7 +73,12 @@ export default function ComparisonTable({ mlPrediction, llmPrediction }) {
               </div>
             </td>
             <td><strong>{llmLabel}</strong></td>
+            <td className="mono accuracy-cell">
+              <span className="muted">Not measured</span>
+              <span className="accuracy-note">cost-prohibitive on test set</span>
+            </td>
             <td>
+              <ConfidenceCell confidence={llmPrediction?.confidence} />
               {llmPrediction?.reasoning
                 ? <p className="reasoning-text">{llmPrediction.reasoning}</p>
                 : <span className="muted">—</span>}

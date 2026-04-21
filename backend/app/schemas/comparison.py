@@ -6,6 +6,7 @@ from app.schemas.prediction import LLMPredictionResponse, MLPredictionResponse
 class RAGResponse(BaseModel):
     answer: str
     sources: list[dict]
+    low_similarity: bool          # True when best retrieved score < threshold
     latency_ms: float
     cost_usd: float
 

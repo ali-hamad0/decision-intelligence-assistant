@@ -1,11 +1,13 @@
 import logging
+import os
 import sys
 from pathlib import Path
 
 
 def setup_logging() -> None:
-    log_dir = Path(__file__).resolve().parents[3] / "logs"
-    log_dir.mkdir(exist_ok=True)
+    default_log_dir = Path(__file__).resolve().parents[3] / "logs"
+    log_dir = Path(os.getenv("LOG_DIR", str(default_log_dir)))
+    log_dir.mkdir(parents=True, exist_ok=True)
 
     fmt = "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
     datefmt = "%Y-%m-%d %H:%M:%S"

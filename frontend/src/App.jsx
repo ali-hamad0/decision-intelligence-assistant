@@ -75,7 +75,7 @@ export default function App() {
               />
             </div>
 
-            <SourcePanel sources={result.rag.sources} />
+            <SourcePanel sources={result.rag.sources} lowSimilarity={result.rag.low_similarity} />
 
             <ComparisonTable
               mlPrediction={result.ml_prediction}
