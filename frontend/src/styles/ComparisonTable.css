@@ -1,0 +1,134 @@
+.comparison-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.comparison-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  font-size: 0.92rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.comparison-subhead {
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* ── Table ──────────────────────────────────────── */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.comparison-table th {
+  text-align: left;
+  padding: 11px 20px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.comparison-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table tr:hover td { background: var(--surface-2); }
+
+/* ── Model cell ─────────────────────────────────── */
+.model-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.model-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.model-icon.ml  { background: #0EA5E9; }
+.model-icon.llm { background: #7C3AED; }
+
+.model-name  { font-weight: 600; font-size: 0.88rem; }
+.model-desc  { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Confidence cell ────────────────────────────── */
+.confidence-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.confidence-value {
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.confidence-bar-bg {
+  width: 100px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--primary);
+}
+
+/* ── Agreement row ──────────────────────────────── */
+.agreement-row td { background: transparent; }
+
+.agreement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.agreement-badge.agree    { background: var(--agree-bg);    color: var(--agree-color); }
+.agreement-badge.disagree { background: var(--disagree-bg); color: var(--disagree-color); }
+
+/* ── Reasoning text ─────────────────────────────── */
+.reasoning-text {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 340px;
+}
+
+.muted { color: var(--text-light); }
+
+.cost-zero { color: var(--normal); font-weight: 500; }
+
+.mono { font-family: var(--mono); font-size: 0.82rem; }

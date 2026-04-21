@@ -1,0 +1,133 @@
+.query-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.query-card-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+/* ── Examples ───────────────────────────────────── */
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.examples-label {
+  width: 100%;
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+
+.example-chip {
+  background: var(--primary-light);
+  color: var(--primary-text);
+  border: 1px solid #BFDBFE;
+  border-radius: 99px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.example-chip:hover {
+  background: #DBEAFE;
+  border-color: #93C5FD;
+}
+
+/* ── Textarea ───────────────────────────────────── */
+.textarea-wrap {
+  position: relative;
+}
+
+.query-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.94rem;
+  color: var(--text);
+  background: var(--surface-2);
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  line-height: 1.55;
+}
+
+.query-textarea::placeholder { color: var(--text-light); }
+
+.query-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+  background: #fff;
+}
+
+.query-textarea:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.char-count {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+/* ── Submit row ─────────────────────────────────── */
+.query-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 26px;
+  font-size: 0.94rem;
+  font-weight: 500;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 2px 6px rgba(59,130,246,.35);
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(59,130,246,.4);
+  transform: translateY(-1px);
+}
+
+.submit-btn:active:not(:disabled) { transform: translateY(0); }
+
+.submit-btn:disabled {
+  background: #93C5FD;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ── Spinner ────────────────────────────────────── */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
