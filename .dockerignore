@@ -1,0 +1,54 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python artefacts
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Jupyter
+notebooks/
+*.ipynb
+.ipynb_checkpoints/
+
+# Data (large CSV)
+data/raw/
+data/processed/
+
+# Logs
+logs/
+
+# Tests / coverage
+backend/tests/
+htmlcov/
+.coverage
+
+# Docs
+*.md
+README*
+
+# Docker files themselves
+docker-compose*.yml
+**/Dockerfile
+
+# Git / gitignore
+.git/
+.gitignore
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Python venv
+venv/
+.venv/
