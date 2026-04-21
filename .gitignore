@@ -1,0 +1,51 @@
+# Secrets
+.env
+.env.*
+!.env.example
+kaggle.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (Kaggle dataset is too big for git)
+data/raw/*
+data/processed/*
+!data/**/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Chroma vector DB (runtime data, not source)
+backend/chroma_data/
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+
+# Build artefacts
+*.egg-info/
+dist/
+build/
+
+# Test coverage
+htmlcov/
+.coverage
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
